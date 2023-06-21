@@ -2,6 +2,7 @@ import "./App.css";
 import ItemList from "./components/item_list/ItemList";
 import ItemForm from "./components/item_form/ItemForm";
 import Header, { Filter } from "./components/header/FilterHeader";
+import NightModeProvider from "./context/NightMode";
 import { useEffect, useState } from "react";
 
 const localStorage_key = "items";
@@ -52,14 +53,16 @@ function App() {
 
   return (
     <main className="main">
-      <Header onFilter={handleFilter} />
-      <ItemList
-        filter={filter}
-        items={items}
-        onDeleteItem={handleDelete}
-        onChangeItemState={handleChangeItemState}
-      />
-      <ItemForm onAddItem={handleAdd} />
+      <NightModeProvider>
+        <Header onFilter={handleFilter} />
+        <ItemList
+          filter={filter}
+          items={items}
+          onDeleteItem={handleDelete}
+          onChangeItemState={handleChangeItemState}
+        />
+        <ItemForm onAddItem={handleAdd} />
+      </NightModeProvider>
     </main>
   );
 }

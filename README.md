@@ -6,4 +6,4 @@
 4. -[x] 아이템 상태 변경하기 (Active -> completed)
 5. -[x] 필터링 기능 제공하기 (All, Active, Completed)
 6. -[x] 로컬 스토리지에 데이터 저장
-7. -[] night 모드 제공
+7. -[x] night 모드 제공
