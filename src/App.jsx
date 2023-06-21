@@ -21,9 +21,24 @@ function App() {
     setItems((prev) => prev.filter((i) => i.id !== item.id));
   };
 
+  const handleChangeItemState = (item) => {
+    setItems((prev) =>
+      prev.map((i) => {
+        if (i.id === item.id) {
+          return { ...item, completed: !item.completed };
+        }
+        return i;
+      })
+    );
+  };
+
   return (
     <main className="main">
-      <ItemList items={items} onDeleteItem={handleDelete} />
+      <ItemList
+        items={items}
+        onDeleteItem={handleDelete}
+        onChangeItemState={handleChangeItemState}
+      />
       <ItemForm onAddItem={handleAdd} />
     </main>
   );
