@@ -1,6 +1,7 @@
 import "./App.css";
 import ItemList from "./components/item_list/ItemList";
 import ItemForm from "./components/item_form/ItemForm";
+import Header, { Filter } from "./components/header/FilterHeader";
 import { useState } from "react";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     { id: 1233, content: "카페 가기", completed: false },
     { id: 1234, content: "청소 하기", completed: false },
   ]);
+  const [filter, setFilter] = useState(Filter.ALL);
 
   const handleAdd = (content) => {
     setItems((prev) => [
@@ -32,9 +34,15 @@ function App() {
     );
   };
 
+  const handleFilter = (filter) => {
+    setFilter(filter);
+  };
+
   return (
     <main className="main">
+      <Header onFilter={handleFilter} />
       <ItemList
+        filter={filter}
         items={items}
         onDeleteItem={handleDelete}
         onChangeItemState={handleChangeItemState}

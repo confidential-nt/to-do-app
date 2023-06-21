@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function Item({ item, onDeleteItem, onChangeItemState }) {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(item.completed);
   const handleDelete = () => {
     onDeleteItem(item);
   };
