@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Item from "../item/Item";
 import { Filter } from "../header/FilterHeader";
 import styles from "./itemList.module.css";
