@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { NightModeContext } from "../../context/NightMode";
+import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
+import styles from "./FilterHeader.module.css";
 
 export const Filter = {
   ALL: "all",
@@ -7,7 +9,7 @@ export const Filter = {
   COMPLETED: "completed",
 };
 
-export default function FilterHeader({ onFilter }) {
+export default function FilterHeader({ onFilter, filter }) {
   const { nightMode, toggleNightMode } = useContext(NightModeContext);
 
   const handleAll = () => {
@@ -24,19 +26,39 @@ export default function FilterHeader({ onFilter }) {
   };
 
   return (
-    <header>
-      <button type="button" onClick={handleMode}>
-        {nightMode ? "낮" : "밤"}
-      </button>
-      <button type="button" onClick={handleAll}>
-        All
-      </button>
-      <button type="button" onClick={handleActive}>
-        Active
-      </button>
-      <button type="button" onClick={handleCompleted}>
-        Completed
-      </button>
+    <header className={`${!nightMode ? styles.day : ""} ${styles.header}`}>
+      <div className={styles.headerLeft}>
+        <button type="button" onClick={handleMode}>
+          {nightMode ? (
+            <BsFillSunFill className={styles.mode} />
+          ) : (
+            <BsMoonFill className={`${styles.mode} ${styles.night}`} />
+          )}
+        </button>
+      </div>
+      <div className={styles.headerRight}>
+        <button
+          type="button"
+          onClick={handleAll}
+          className={filter === Filter.ALL ? styles.filterOn : ""}
+        >
+          All
+        </button>
+        <button
+          type="button"
+          onClick={handleActive}
+          className={filter === Filter.ACTIVE ? styles.filterOn : ""}
+        >
+          Active
+        </button>
+        <button
+          type="button"
+          onClick={handleCompleted}
+          className={filter === Filter.COMPLETED ? styles.filterOn : ""}
+        >
+          Completed
+        </button>
+      </div>
     </header>
   );
 }

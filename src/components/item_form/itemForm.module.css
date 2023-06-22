@@ -1,0 +1,32 @@
+@value paddingTop,paddingLeft,darkenBlue,pointOrange,darkenWhite from "../../common/variables.css";
+
+.form {
+  padding: paddingTop paddingLeft;
+  background-color: darkenBlue;
+  display: flex;
+}
+
+.form.day {
+  background-color: darkenWhite;
+}
+
+.form input {
+  display: block;
+  width: 100%;
+  flex-basis: 70%;
+  margin-right: -1px;
+  padding: 0.5rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: transparent;
+}
+
+.form button {
+  display: block;
+  width: 100%;
+  flex-basis: 30%;
+  background-color: pointOrange;
+  padding: 0.5rem;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}

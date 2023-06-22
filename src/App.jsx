@@ -53,16 +53,18 @@ function App() {
 
   return (
     <main className="main">
-      <NightModeProvider>
-        <Header onFilter={handleFilter} />
-        <ItemList
-          filter={filter}
-          items={items}
-          onDeleteItem={handleDelete}
-          onChangeItemState={handleChangeItemState}
-        />
-        <ItemForm onAddItem={handleAdd} />
-      </NightModeProvider>
+      <div className="container">
+        <NightModeProvider>
+          <Header onFilter={handleFilter} filter={filter} />
+          <ItemList
+            filter={filter}
+            items={items}
+            onDeleteItem={handleDelete}
+            onChangeItemState={handleChangeItemState}
+          />
+          <ItemForm onAddItem={handleAdd} />
+        </NightModeProvider>
+      </div>
     </main>
   );
 }

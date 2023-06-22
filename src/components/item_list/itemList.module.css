@@ -1,0 +1,14 @@
+@value paddingTop,paddingRight,lightenBlue from "../../common/variables.css";
+
+.list {
+  height: 17rem;
+  overflow: scroll;
+  padding: paddingTop paddingRight;
+  background-color: lightenBlue;
+  color: #fff;
+}
+
+.list.day {
+  background-color: #fff;
+  color: #000;
+}

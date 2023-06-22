@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import styles from "./itemForm.module.css";
+import { NightModeContext } from "../../context/NightMode";
 
 export default function ItemForm({ onAddItem }) {
+  const { nightMode } = useContext(NightModeContext);
   const [item, setItem] = useState("");
 
   const handleSumbit = (e) => {
@@ -14,7 +17,10 @@ export default function ItemForm({ onAddItem }) {
   };
 
   return (
-    <form onSubmit={handleSumbit}>
+    <form
+      className={`${!nightMode ? styles.day : ""} ${styles.form}`}
+      onSubmit={handleSumbit}
+    >
       <input
         type="text"
         placeholder="Add Todo"

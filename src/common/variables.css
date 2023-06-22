@@ -1,0 +1,13 @@
+/* Colors */
+@value darkenBlue: #1D1E3D;
+@value lightenBlue: #262944;
+@value lightenGrey: #555867;
+@value pointOrange: #F48F35;
+@value darkenWhite: #F7F6F7;
+@value dayLightenGrey: #b0b2ba;
+
+/* Size */
+@value paddingTop: 1rem;
+@value paddingBtm: 1rem;
+@value paddingRight: 0.8rem;
+@value paddingLeft: 0.8rem;

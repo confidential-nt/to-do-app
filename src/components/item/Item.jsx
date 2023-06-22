@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { NightModeContext } from "../../context/NightMode";
+import styles from "./Item.module.css";
+import { IconContext } from "react-icons";
+import { BsFillTrashFill, BsCheck } from "react-icons/bs";
 
 export default function Item({ item, onDeleteItem, onChangeItemState }) {
+  const { nightMode } = useContext(NightModeContext);
   const [completed, setCompleted] = useState(item.completed);
   const handleDelete = () => {
     onDeleteItem(item);
@@ -12,17 +17,27 @@ export default function Item({ item, onDeleteItem, onChangeItemState }) {
   };
 
   return (
-    <li className={completed ? "completed" : ""}>
+    <li
+      className={`${completed ? styles.completed : ""} ${
+        !nightMode ? styles.day : ""
+      } ${styles.item}`}
+    >
       <input
         type="checkbox"
-        id="completed"
+        id={`completed-check-${item.id}`}
         onChange={handleChange}
         checked={completed}
       />
-      <label htmlFor="completed"></label>
-      <h2>{item.content}</h2>
+      <div className={styles.itemLeft}>
+        <label htmlFor={`completed-check-${item.id}`}>
+          <IconContext.Provider value={{ size: "2rem" }}>
+            <BsCheck className={styles.check} />
+          </IconContext.Provider>
+        </label>
+        <h2>{item.content}</h2>
+      </div>
       <button type="button" onClick={handleDelete}>
-        삭제
+        <BsFillTrashFill className={styles.deleteBtn} />
       </button>
     </li>
   );

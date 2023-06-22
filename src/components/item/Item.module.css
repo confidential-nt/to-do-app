@@ -1,0 +1,82 @@
+@value lightenGrey, pointOrange, dayLightenGrey from "../../common/variables.css";
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.item input[type="checkbox"] {
+  display: none;
+}
+
+.item .itemLeft {
+  display: flex;
+  align-items: center;
+}
+
+.item .itemLeft label {
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  margin-right: 0.7rem;
+  cursor: pointer;
+  border: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item.day .itemLeft label {
+  border: 1px solid #000;
+}
+
+.item .itemLeft label .check {
+  width: 2rem;
+  height: 2rem;
+  display: none;
+}
+
+.item input[type="checkbox"]:checked ~ .itemLeft label {
+  background-color: pointOrange;
+}
+
+.item input[type="checkbox"]:checked ~ .itemLeft label .check {
+  display: block;
+}
+
+.item .itemLeft h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.item.completed .itemLeft h2 {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.item button {
+  background-color: lightenGrey;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item.day button {
+  background-color: dayLightenGrey;
+}
+
+.item .deleteBtn {
+  fill: #fff;
+}
+
+.item.day .deleteBtn {
+  fill: #00000064;
+}

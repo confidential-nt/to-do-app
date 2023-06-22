@@ -1,0 +1,53 @@
+@value darkenBlue, lightenGrey, pointOrange, darkenWhite, dayLightenGrey, paddingTop, paddingRight from "../../common/variables.css";
+
+.header {
+  background-color: darkenBlue;
+  padding: paddingTop paddingRight;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid lightenGrey;
+}
+
+.header.day {
+  background-color: darkenWhite;
+  border-bottom: 2px solid dayLightenGrey;
+}
+
+.headerLeft .mode {
+  fill: #fff;
+}
+
+.headerLeft .mode.night {
+  fill: pointOrange;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+}
+
+.headerRight button {
+  display: block;
+  color: pointOrange;
+  position: relative;
+}
+
+.headerRight button:not(:last-child) {
+  margin-right: 0.7rem;
+}
+
+.headerRight button.filterOn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -20%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: lightenGrey;
+}
+
+.header.day .headerRight button.filterOn::after {
+  background-color: dayLightenGrey;
+}
