@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import styles from "./itemForm.module.css";
 import { NightModeContext } from "../../context/NightMode";
 
-export default function ItemForm({ onAddItem }) {
+const ItemForm = memo(({ onAddItem }) => {
   const { nightMode } = useContext(NightModeContext);
   const [item, setItem] = useState("");
 
@@ -30,4 +30,6 @@ export default function ItemForm({ onAddItem }) {
       <button type="submit">Add</button>
     </form>
   );
-}
+});
+
+export default ItemForm;

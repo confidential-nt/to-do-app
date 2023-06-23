@@ -3,7 +3,7 @@ import ItemList from "./components/item_list/ItemList";
 import ItemForm from "./components/item_form/ItemForm";
 import Header, { Filter } from "./components/header/FilterHeader";
 import NightModeProvider from "./context/NightMode";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const localStorage_key = "items";
 
@@ -18,13 +18,13 @@ function App() {
     }
   }, []);
 
-  const handleAdd = (content) => {
+  const handleAdd = useCallback((content) => {
     setItems((prev) => {
       const items = [...prev, { id: Date.now(), content, completed: false }];
       localStorage.setItem(localStorage_key, JSON.stringify(items));
       return items;
     });
-  };
+  }, []);
 
   const handleDelete = (item) => {
     setItems((prev) => {
@@ -47,9 +47,9 @@ function App() {
     });
   };
 
-  const handleFilter = (filter) => {
+  const handleFilter = useCallback((filter) => {
     setFilter(filter);
-  };
+  }, []);
 
   return (
     <main className="main">

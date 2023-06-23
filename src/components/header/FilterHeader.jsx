@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { NightModeContext } from "../../context/NightMode";
 import { BsFillSunFill, BsMoonFill } from "react-icons/bs";
 import styles from "./FilterHeader.module.css";
@@ -9,7 +9,7 @@ export const Filter = {
   COMPLETED: "completed",
 };
 
-export default function FilterHeader({ onFilter, filter }) {
+const FilterHeader = memo(({ onFilter, filter }) => {
   const { nightMode, toggleNightMode } = useContext(NightModeContext);
 
   const handleAll = () => {
@@ -61,4 +61,6 @@ export default function FilterHeader({ onFilter, filter }) {
       </div>
     </header>
   );
-}
+});
+
+export default FilterHeader;
