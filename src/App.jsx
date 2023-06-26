@@ -7,9 +7,9 @@ import { useCallback, useReducer, useState } from "react";
 import itemReducer from "./reducer/item-reducer";
 
 const localStorage_key = "items";
+const storedItems = localStorage.getItem(localStorage_key) || "[]";
 
 function App() {
-  const storedItems = localStorage.getItem(localStorage_key) || [];
   const [items, dispatch] = useReducer(itemReducer, JSON.parse(storedItems));
   const [filter, setFilter] = useState(Filter.ALL);
 
