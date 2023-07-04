@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const localStorage_key = "items";
 
 export default function itemReducer(items, action) {
@@ -6,7 +8,7 @@ export default function itemReducer(items, action) {
       const { content } = action;
       const addedItems = [
         ...items,
-        { id: Date.now(), content, completed: false },
+        { id: uuidv4(), content, completed: false },
       ];
       localStorage.setItem(localStorage_key, JSON.stringify(addedItems));
       return addedItems;
@@ -23,6 +25,13 @@ export default function itemReducer(items, action) {
       });
       localStorage.setItem(localStorage_key, JSON.stringify(changeditems));
       return changeditems;
+    case "drag":
+      const reorderedItems = [...items];
+      const item = reorderedItems.find((i) => i.id === action.draggableId);
+      reorderedItems.splice(action.source.index, 1);
+      reorderedItems.splice(action.destination.index, 0, item);
+      localStorage.setItem(localStorage_key, JSON.stringify(reorderedItems));
+      return reorderedItems;
     default:
       throw Error(`unknown action type: ${action.type}`);
   }
